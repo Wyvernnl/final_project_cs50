@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Exercise List{% endblock %}
+
+{% block content %}
+<div class="table__01">
+    <h1 style="text-align: center;">Exercise List</h1>
+    <form class="search__bar" action="{{ url_for('exercises.exercise_list') }}" method="GET">
+        <input type="text" name="search" placeholder="Search by name" value="{{ search_query if search_query else '' }}">
+        <button type="submit">Search</button>
+    </form>
+    <table class="desktop__1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Muscle Group</th>
+                <th>Exercise Type</th>
+                <th>Equipment</th>
+                <th>Difficulty Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.muscle_group }}</td>
+                <td>{{ exercise.exercise_type }}</td>
+                <td>{{ exercise.equipment }}</td>
+                <td>{{ exercise.difficulty_level }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul class="mobile__list mobile__1">
+        {% for exercise in exercises %}
+        <li>
+            <h2>{{ exercise.name }}</h2>
+            <p><strong>Muscle Group:</strong> {{ exercise.muscle_group }}</p>
+            <p><strong>Exercise Type:</strong> {{ exercise.exercise_type }}</p>
+            <p><strong>Equipment:</strong> {{ exercise.equipment }}</p>
+            <p><strong>Difficulty Level:</strong> {{ exercise.difficulty_level }}</p>
+            <p><strong>Variations:</strong> {{ exercise.variations }}</p>
+            <p><strong>Adaptations:</strong> {{ exercise.adaptations }}</p>
+            <p><strong>Injury Risk:</strong> {{ exercise.injury_risk }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

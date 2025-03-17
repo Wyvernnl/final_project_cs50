@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Student Register{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <form action="{{ url_for('students.Student_registration') }}" method="post" class="form" enctype="multipart/form-data">
+            <h1 class="form__title">Student Registration</h1>
+            <div class="form__group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form__group">
+                <label for="birth_date">Date of Birth</label>
+                <input type="date" id="birth_date" name="birth_date" required>
+            </div>
+            <div class="form__group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    {% for gender in gender %}
+                    <option value="{{ gender.id }}">{{ gender.gender }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form__group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form__group">
+                <label for="photo">Profile Picture</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+            </div>
+            <div class="form__group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" name="height" step="0.01" required>
+            </div>
+            <div class="form__group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" name="weight" step="0.01" required>
+            </div>
+            <div class="form__group">
+                <label for="objective">Goals</label>
+                <select id="objective" name="objective" required>
+                    {% for goal in goal %}
+                    <option value="{{ goal.id }}">{{ goal.goal }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="medical_history">Medical History</label>
+                <textarea id="medical_history" name="medical_history" placeholder="Provide health issues, injuries, etc..."></textarea>
+            </div>
+            <div class="form__group">
+                <label for="training_preference">Training Preferences</label>
+                <textarea id="training_preference" name="training_preference" placeholder="Ex.: Home workout, gym, available equipment..."></textarea>
+            </div>
+            <div class="form__group">
+                <label for="nivel">Experience Level</label>
+                <select id="nivel" name="nivel" required>
+                    {% for level in level %}
+                    <option value="{{ level.id }}">{{ level.level }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="time">Available Hours</label>
+                <input type="text" id="time" name="time" placeholder="Ex.: Mon-Fri 6pm-8pm">
+            </div>
+            <div class="form__group">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" name="notes" placeholder="Space for extra information..."></textarea>
+            </div>
+            <button type="submit" class="button__2">Register Student</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

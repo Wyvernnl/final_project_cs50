@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Student Profile{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Student Profile</h1>
+    <div class="profile-header">
+        <img id="profile-photo"
+            src="{% if student[0].photo_url %}../{{ student[0].photo_url }}{% else %}{{ url_for('static', filename='asset/icon/profile_photo.png') }}{% endif %}"
+            alt="Student Photo" class="profile-photo">
+        <ul class="profile-info">
+            <li><strong>Name:</strong> <span id="name">{{ student[0].name }}</span></li>
+            <li><strong>Date of Birth:</strong> <span id="data_nascimento">{{ student[0].birth_date }}</span></li>
+            <li><strong>Gender:</strong> <span id="genero">{{ student[0].gender }}</span></li>
+            <li><strong>Phone:</strong> <span id="telefone">{{ student[0].phone }}</span></li>
+            <li><strong>Email:</strong> <span id="email">{{ student[0].email }}</span></li>
+            <li><strong>Height:</strong> <span id="altura">{{ student[0].height }}</span> cm</li>
+            <li><strong>Weight:</strong> <span id="peso">{{ student[0].weight }}</span> kg</li>
+            <li><strong>Goal:</strong> <span id="objetivo">{{ student[0].goal }}</span></li>
+        </ul>
+    </div>
+    <div class="list__01">
+        <ul class="profile-details">
+            <li><strong>Medical History:</strong> <span id="historico">{{ student[0].medical_history }}</span></li>
+            <li><strong>Training Preference:</strong> <span id="preferencia">{{ student[0].training_preference }}</span></li>
+            <li><strong>Level:</strong> <span id="nivel">{{ student[0].level_id }}</span></li>
+            <li><strong>Schedule:</strong> <span id="horario">{{ student[0].schedule }}</span></li>
+            <li><strong>Notes:</strong> <span id="observacoes">{{ student[0].notes }}</span></li>
+        </ul>
+    </div>
+    <div class="table__01">
+        <h2>Previous Assessments</h2>
+        <div class="ctnr__btn">
+            <button class="button__2">
+            <a href="{{ url_for('assessments.assessment') }}" class="button">Add New Assessment</a>
+        </button>
+        </div>
+        <div class="container__table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Day</th>
+                        <th>Repetitions</th>
+                        <th>Sets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for treino in training %}
+                    <tr>
+                        <td>{{ treino.name }}</td>
+                        <td>{{ treino.day }}</td>
+                        <td>{{ treino.repetitions }}</td>
+                        <td>{{ treino.sets }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div></br>
+        <div class="container__table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Weight</th>
+                        <th>Height</th>
+                        <th>Goal</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for evaluation in evaluations %}
+                    <tr>
+                        <td>{{ evaluation.date }}</td>
+                        <td>{{ evaluation.weight }}</td>
+                        <td>{{ evaluation.height }}</td>
+                        <td>{{ evaluation.goal }}</td>
+                        <td>{{ evaluation.notes }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

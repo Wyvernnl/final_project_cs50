@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Register Exercise{% endblock %}
+{% block link %}
+<script>
+    let currentStep = 1;
+    const totalSteps = 6;
+
+    function nextStep() {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep++;
+        if (currentStep > totalSteps) currentStep = totalSteps;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        updateProgressBar();
+    }
+
+    function prevStep() {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep--;
+        if (currentStep < 1) currentStep = 1;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        updateProgressBar();
+    }
+
+    function updateProgressBar() {
+        for (let i = 1; i <= totalSteps; i++) {
+            const progress = document.getElementById(`progress${i}`);
+            if (i <= currentStep) {
+                progress.classList.add('active');
+            } else {
+                progress.classList.remove('active');
+            }
+        }
+    }
+</script>
+{% endblock %}
+{% block content %}
+<form id="exerciseForm" action="{{ url_for('exercises.register') }}" method="POST" class="form">
+    <div class="container">
+        <h1 style="text-align: center;">Register Exercise</h1>
+        <div class="progress-bar">
+            <div id="progress1" class="active"></div>
+            <div id="progress2"></div>
+            <div id="progress3"></div>
+            <div id="progress4"></div>
+            <div id="progress5"></div>
+            <div id="progress6"></div>
+        </div>
+        <!-- Exercise Identification -->
+        <div id="step1" class="step active">
+            <h2>Exercise Identification</h2>
+            <div class="form__group">
+                <label for="exercise-name">Exercise Name:</label>
+                <input type="text" id="exercise-name" name="exercise-name" placeholder="Ex: Barbell Bench Press" required>
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="nextStep()" id="page__sys" class="form__button">Next</button>
+        </div>
+        </div>
+
+        <div id="step2" class="step">
+            <div class="form__group">
+                <label for="muscle-group">Category/Muscle Group:</label>
+                <select id="muscle-group" name="muscle-group" required>
+                    {% for group in muscle_groups %}
+                    <option value="{{ group.muscle_group }}">{{ group.muscle_group }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="exercise-type">Exercise Type:</label>
+                <select id="exercise-type" name="exercise-type" required>
+                    <option value="Strength">Strength</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Flexibility">Flexibility</option>
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="subcategory">Subcategory (Optional):</label>
+                <input type="text" id="subcategory" name="subcategory" placeholder="Ex: Compound, Isolation">
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="prevStep()" class="form__button">Previous</button>
+            <button style="flex: 1;" class="button__2" type="button" onclick="nextStep()" class="form__button">Next</button>
+        </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div id="step3" class="step">
+            <h2>Technical Details</h2>
+            <div class="form__group">
+                <label for="equipment">Required Equipment:</label>
+                <select id="equipment" name="equipment" required>
+                    {% for equipment in equipments %}
+                    <option value="{{ equipment.equipment }}">{{ equipment.equipment }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="difficulty-level">Difficulty Level:</label>
+                <select id="difficulty-level" name="difficulty-level" required>
+                    {% for level in difficulty_levels %}
+                    <option value="{{ level.difficulty_level }}">{{ level.difficulty_level }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="execution">Movement Execution:</label>
+                <textarea id="execution" name="execution" rows="4" placeholder="Describe the step-by-step of the exercise"></textarea>
+            </div>
+            <div class="form__group">
+                <label for="video-link">Demonstrative Video or Image (Link):</label>
+                <input type="text" id="video-link" name="video-link" placeholder="https://example.com/video">
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="prevStep()" class="form__button">Previous</button>
+            <button style="flex: 1;" class="button__2" type="button" onclick="nextStep()" class="form__button">Next</button>
+        </div>
+        </div>
+
+        <!-- Benefits and Goals -->
+        <div id="step4" class="step">
+            <h2>Benefits and Goals</h2>
+            <div class="form__group">
+                <label for="benefits">Main Benefits:</label>
+                <input type="text" id="benefits" name="benefits" placeholder="Ex: Strength gain, Hypertrophy">
+            </div>
+            <div class="form__group">
+                <label for="goal">Exercise Goal:</label>
+                <input type="text" id="goal" name="goal" placeholder="Ex: Develop chest and triceps">
+            </div>
+            <div class="form__group">
+                <label for="contraindications">Contraindications:</label>
+                <textarea id="contraindications" name="contraindications" rows="3" placeholder="Ex: Shoulder injuries"></textarea>
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="prevStep()" class="form__button">Previous</button>
+            <button style="flex: 1;" class="button__2" type="button" onclick="nextStep()" class="form__button">Next</button>
+        </div>
+        </div>
+
+        <!-- Variants and Adaptations -->
+        <div id="step5" class="step">
+            <h2>Variants and Adaptations</h2>
+            <div class="form__group">
+                <label for="variations">Exercise Variations:</label>
+                <input type="text" id="variations" name="variations" placeholder="Ex: Incline Dumbbell Press">
+            </div>
+            <div class="form__group">
+                <label for="adaptations">Adaptations for Different Levels:</label>
+                <textarea id="adaptations" name="adaptations" rows="4" placeholder="Ex: Beginner level - no weights execution"></textarea>
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="prevStep()" class="form__button">Previous</button>
+            <button style="flex: 1;" class="button__2" type="button" onclick="nextStep()" class="form__button">Next</button>
+        </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div id="step6" class="step">
+            <h2>Additional Information</h2>
+            <div class="form__group">
+                <label for="injury-risk">Injury Risk:</label>
+                <input type="text" id="injury-risk" name="injury-risk" placeholder="Ex: Lower back strain">
+            </div>
+            <div class="form__group">
+                <label for="notes">General Notes:</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Ex: Posture and breathing tips"></textarea>
+            </div>
+            <div class="form__group">
+                <label for="tags">Tags/Keywords:</label>
+                <input type="text" id="tags" name="tags" placeholder="Ex: chest, dumbbells, hypertrophy">
+            </div>
+            <div class="ctnr__btn">
+            <button style="flex: 1;" class="button__2" type="button" onclick="prevStep()" class="form__button">Previous</button>
+            <button style="flex: 1;" class="button__2" type="submit" class="form__button">Register Exercise</button>
+            </div>
+        </div>
+</form>
+</div>
+{% endblock %}

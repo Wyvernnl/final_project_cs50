@@ -1,0 +1,26 @@
+{% extends "forms/auth_base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<form method="post" class="form">
+    <p class="form-title">Sign in to your account</p>
+    <div class="input-container">
+        <div class="input__container">
+            <input type="text" name="username" placeholder="Enter you username" required>
+            <span></span>
+        </div>
+    </div>
+    <div class="input-container">
+        <div class="input__container">
+            <input id="password" type="password" name="password" placeholder="Enter password" required>
+            <span  class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+    </div>
+    <button style="width: 100%;" type="submit" class="button__2">Sign in</button>
+    <p class="signup-link">
+        No account?
+        <a href="{{ url_for('auth.register') }}">Sign up here</a>
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Assessment{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{{ url_for('assessments.submit_evaluation') }}" method="POST" class="form">
+        <h1 class="form__title">Physical Assessment and Monitoring</h1>
+        <br>
+        <h2>Student</h2>
+        <div class="form__group">
+            <label for="student">Name</label>
+            <select id="name__1" name="student" class="form__input" required>
+                {% for aluno in students %}
+                <option value="{{ aluno.id }}">{{ aluno.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <h2>Physical Data</h2>
+        <div class="form__group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" class="form__input" required>
+        </div>
+        <div class="form__group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" class="form__input" step="0.1" required>
+        </div>
+        <div class="form__group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" class="form__input" step="0.1" required>
+        </div>
+        <div class="form__group">
+            <label for="body-fat">Body Fat Percentage:</label>
+            <input type="number" id="body-fat" name="body-fat" class="form__input" step="0.1" required>
+        </div>
+        <div class="form__group">
+            <label for="muscle-mass">Muscle Mass (kg):</label>
+            <input type="number" id="muscle-mass" name="muscle-mass" class="form__input" step="0.1">
+        </div>
+
+        <div class="desktop__1">
+            <div class="table__01">
+                <h2>Body Measurements Collection</h2>
+                <p>Fill in the student`s body measurements in the fields below:</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Measurement</th>
+                            <th>Value</th>
+                            <th>Observation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chest (cm)</td>
+                            <td><input type="number" name="chest" class="form__input" placeholder="Ex: 95" step="0.1"></td>
+                            <td><input type="text" name="chest_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Waist (cm)</td>
+                            <td><input type="number" name="waist" class="form__input" placeholder="Ex: 85" step="0.1"></td>
+                            <td><input type="text" name="waist_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Hip (cm)</td>
+                            <td><input type="number" name="hip" class="form__input" placeholder="Ex: 95" step="0.1"></td>
+                            <td><input type="text" name="hip_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Right Arm (cm)</td>
+                            <td><input type="number" name="right_arm" class="form__input" placeholder="Ex: 32" step="0.1"></td>
+                            <td><input type="text" name="right_arm_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Left Arm (cm)</td>
+                            <td><input type="number" name="left_arm" class="form__input" placeholder="Ex: 31" step="0.1"></td>
+                            <td><input type="text" name="left_arm_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Right Thigh (cm)</td>
+                            <td><input type="number" name="right_thigh" class="form__input" placeholder="Ex: 55" step="0.1"></td>
+                            <td><input type="text" name="right_thigh_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Left Thigh (cm)</td>
+                            <td><input type="number" name="left_thigh" class="form__input" placeholder="Ex: 54" step="0.1"></td>
+                            <td><input type="text" name="left_thigh_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                        <tr>
+                            <td>Calf (cm)</td>
+                            <td><input type="number" name="calf" class="form__input" placeholder="Ex: 35" step="0.1"></td>
+                            <td><input type="text" name="calf_observation" class="form__input" placeholder="Observation"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mobile__1">
+            <h2>Body Measurements Collection</h2>
+            <div>
+                <ul class="list__01">
+                    <li>
+                        <label for="chest-mobile">Chest (cm)</label>
+                        <input type="number" id="chest-mobile" name="chest" class="form__input" placeholder="Ex: 95" step="0.1">
+                        <input type="text" name="chest_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="waist-mobile">Waist (cm)</label>
+                        <input type="number" id="waist-mobile" name="waist" class="form__input" placeholder="Ex: 85" step="0.1">
+                        <input type="text" name="waist_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="hip-mobile">Hip (cm)</label>
+                        <input type="number" id="hip-mobile" name="hip" class="form__input" placeholder="Ex: 95" step="0.1">
+                        <input type="text" name="hip_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="right-arm-mobile">Right Arm (cm)</label>
+                        <input type="number" id="right-arm-mobile" name="right_arm" class="form__input" placeholder="Ex: 32" step="0.1">
+                        <input type="text" name="right_arm_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="left-arm-mobile">Left Arm (cm)</label>
+                        <input type="number" id="left-arm-mobile" name="left_arm" class="form__input" placeholder="Ex: 31" step="0.1">
+                        <input type="text" name="left_arm_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="right-thigh-mobile">Right Thigh (cm)</label>
+                        <input type="number" id="right-thigh-mobile" name="right_thigh" class="form__input" placeholder="Ex: 55" step="0.1">
+                        <input type="text" name="right_thigh_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="left-thigh-mobile">Left Thigh (cm)</label>
+                        <input type="number" id="left-thigh-mobile" name="left_thigh" class="form__input" placeholder="Ex: 54" step="0.1">
+                        <input type="text" name="left_thigh_observation" class="form__input" placeholder="Observation">
+                    </li>
+                    <li>
+                        <label for="calf-mobile">Calf (cm)</label>
+                        <input type="number" id="calf-mobile" name="calf" class="form__input" placeholder="Ex: 35" step="0.1">
+                        <input type="text" name="calf_observation" class="form__input" placeholder="Observation">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <h2>Fitness Assessment</h2>
+        <div class="form__group">
+            <label for="rest-hr">Resting Heart Rate (bpm):</label>
+            <input type="number" id="rest-hr" name="rest-hr" class="form__input" step="1">
+        </div>
+        <div class="form__group">
+            <label for="test-cooper">Distance in Cooper Test (meters):</label>
+            <input type="number" id="test-cooper" name="test-cooper" class="form__input" step="0.1">
+        </div>
+        <div class="form__group">
+            <label for="flexibility">Flexibility Test (cm):</label>
+            <input type="number" id="flexibility" name="flexibility" class="form__input" step="0.1">
+        </div>
+
+        <h2>Health and Well-being</h2>
+        <div class="form__group">
+            <label for="blood-pressure">Blood Pressure (mmHg):</label>
+            <input type="text" id="blood-pressure" name="blood-pressure" class="form__input" placeholder="ex: 120/80" required>
+        </div>
+        <div class="form__group">
+            <label for="sleep-quality">Sleep Quality (hours/day):</label>
+            <input type="number" id="sleep-quality" name="sleep-quality" class="form__input" step="0.1">
+        </div>
+        <div class="form__group">
+            <label for="stress-level">Stress Level (1 to 10):</label>
+            <input type="number" id="stress-level" name="stress-level" class="form__input" min="1" max="10">
+        </div>
+
+        <h2>Progress and Feedback</h2>
+        <div class="form__group">
+            <label for="training-feedback">Training Feedback:</label>
+            <textarea id="training-feedback" name="training-feedback" class="form__input" rows="4" placeholder="Describe your difficulties or perceived results"></textarea>
+        </div>
+        <div class="form__group">
+            <label for="new-goals">Evolution Goals:</label>
+            <textarea id="new-goals" name="new-goals" class="form__input" rows="4" placeholder="Set short or long-term goals"></textarea>
+        </div>
+
+        <button type="submit" class="button__2">Save Assessment</button>
+    </form>
+</div>
+{% endblock %}

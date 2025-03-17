@@ -1,0 +1,32 @@
+{% extends "forms/auth_base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<form class="form" id="registerForm" action="/auth/register" method="post">
+    <p class="form-title">Create Your Account</p>
+    <div class="input-container">
+        <div class="input__container">
+            <input type="text" id="username" name="username" required="" placeholder="Enter your Username">
+        </div>
+    </div>
+    <div class="input-container">
+        <div class="input__container">
+            <input type="password" id="password" name="password" required="" placeholder="Enter your Password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+    </div>
+    <div class="input-container">
+        <div class="input__container">
+            <input type="password" id="password-repeat" name="password-repeat" required="" placeholder="Confirm your Password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+    </div>
+    <button style="width: 100%;" type="submit" class="button__2">Register</button>
+    <p class="signup-link">
+        Already have an account?
+        <a href="/auth/login">Log in here</a>
+    </p>
+</form>
+<script src="{{ url_for('static', filename='script/script.js') }}" type="module"></script>
+{% endblock %}

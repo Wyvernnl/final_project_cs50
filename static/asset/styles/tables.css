@@ -1,0 +1,91 @@
+.table__01 {
+    max-width: 1200px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-medium);
+    width: 100%;
+    overflow-x: auto;
+    margin: var(--margin-large) auto;
+}
+
+.table__01 table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+
+.table__01 thead tr {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    text-align: center;
+}
+
+.table__01 th,
+.table__01 td {
+    text-align: left;
+    padding: var(--padding-medium);
+    border: 1px solid var(--border-color);
+}
+
+.table__01 tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table__01 tbody tr:last-of-type {
+    border-bottom: 2px solid var(--accent-color);
+}
+.list__item {
+    text-align: left;
+    padding: var(--padding-medium);
+    margin: var(--margin-small) 0;
+    border: 2px solid var(--border-color);
+}
+.list__01 {
+    max-width: 1200px;
+    margin: var(--margin-none) auto;
+    padding: var(--padding-large);
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow-medium);
+    list-style-type: none;
+    display: grid;
+    text-align: center;
+}
+
+.list__01 li {
+    padding: var(--padding-medium);
+    border-bottom: 1px solid var(--border-color);
+    display: inline-grid;
+    border: 2px solid var(--accent-color);
+}
+
+.list__01 li:nth-of-type(even) {
+    background-color: var(--primary-color);
+}
+
+.list__01 li:last-of-type {
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.list__02 {
+    max-width: 900px;
+    margin: var(--margin-none) auto;
+    padding: var(--padding-large);
+    background-color: var(--background-color);
+    list-style-type: none;
+}
+
+.list__02 li {
+    padding: var(--padding-medium);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow-medium);
+    border: 2px solid var(--accent-color);
+    margin-top: var(--padding-small);
+}
+
+.list__02 li:nth-of-type(even) {
+    background-color: var(--primary-color);
+}
+
+.list__02 li:last-of-type {
+    border-bottom: 2px solid var(--accent-color);
+}

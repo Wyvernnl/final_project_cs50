@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Training Register{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form id="exerciseForm" action="{{ url_for('training.register_training') }}" method="post" class="form">
+        <h1 style="text-align: center;" >Training Registration</h1>
+        <div class="form__group">
+            <label for="student">Select Student:</label>
+            <select name="student" required>
+                {% for student in students %}
+                <option value="{{ student.id }}" {% if student.id == request.args.get('student_id') %}selected{% endif %}>{{ student.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="exerciseTable" class="hidden">
+            <div class="table__01">
+                <h2>Exercises by Day of the Week</h2>
+                <div class="form__group">
+                    <h3>Monday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mondayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('monday', 'exercises-data')">Add Exercise</button>
+                    <div id="exercises-data" style="display: none;">{{ exercises | tojson }}</div>
+                </div>
+
+                <div class="form__group">
+                    <h3>Tuesday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tuesdayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('tuesday', 'exercises-data')">Add Exercise</button>
+                </div>
+
+                <div class="form__group">
+                    <h3>Wednesday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="wednesdayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('wednesday', 'exercises-data')">Add Exercise</button>
+                </div>
+
+                <div class="form__group">
+                    <h3>Thursday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="thursdayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('thursday', 'exercises-data')">Add Exercise</button>
+                </div>
+
+                <div class="form__group">
+                    <h3>Friday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fridayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('friday', 'exercises-data')">Add Exercise</button>
+                </div>
+
+                <div class="form__group">
+                    <h3>Saturday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="saturdayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('saturday', 'exercises-data')">Add Exercise</button>
+                </div>
+
+                <div class="form__group">
+                    <h3>Sunday</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Repetitions</th>
+                                <th>Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sundayTableBody"></tbody>
+                    </table>
+                    <button type="button" onclick="addRow('sunday', 'exercises-data')">Add Exercise</button>                
+                </div>
+            </div>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}

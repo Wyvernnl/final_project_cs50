@@ -1,0 +1,91 @@
+:root {
+    --background-color: #ffffff;
+    --primary-color: #a51c30;
+    --secondary-color: #4d4d4f;
+    --text-color: #2c2c2c;
+    --accent-color: #a51c30; 
+    --border-color: #dcdcdc; 
+    --hover-color: #f9f9f9;
+
+    --font-size-small: 0.875rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.25rem;
+
+    --padding-small: 0.25rem;
+    --padding-medium: 0.5rem;
+    --padding-large: 1rem; 
+    --margin-none: 0;
+    --margin-small: 0.25rem;
+    --margin-medium: 0.5rem;
+    --margin-large: 1rem;
+    --margin-extra-large: 2rem;
+    --header-margin: 1.5rem;
+    --button-margin: 0.75rem;
+    --card-margin: 1.25rem;
+
+    --border-radius-small: 0.25rem;
+    --border-radius-medium: 0.5rem;
+    --border-radius-large: 1rem;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+
+    --transition-duration: 0.3s;
+
+    --height-max: 100%;
+    --width-max: 100%;
+    --box-width-small: 6.25rem; 
+    --box-width-medium: 12.5rem;
+    --box-width-large: 25rem;
+    --box-height-small: 3.125rem;
+    --box-height-medium: 6.25rem;
+    --box-height-large: 12.5rem;
+
+    --box-shadow-light: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    --box-shadow-medium: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    --box-shadow-strong: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+:root .dark-theme {
+    --background-color: #2c2c2c;
+    --primary-color: #a51c30;
+    --secondary-color: #ffffff;
+    --text-color: #f5f5f5; 
+    --accent-color: #a51c30; 
+    --border-color: #4d4d4f;
+    --hover-color: #3c3c3c;
+    --bg-opacity: 0.5;
+
+    --font-size-small: 0.875rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.25rem;
+
+    --padding-small: 0.25rem;
+    --padding-medium: 0.5rem;
+    --padding-large: 1rem; 
+    --margin-none: 0;
+    --margin-small: 0.25rem;
+    --margin-medium: 0.5rem;
+    --margin-large: 1rem; 
+    --margin-extra-large: 2rem;
+    --header-margin: 1.5rem;
+    --button-margin: 0.75rem;
+    --card-margin: 1.25rem;
+
+    --border-radius-small: 0.25rem;
+    --border-radius-medium: 0.5rem;
+    --border-radius-large: 1rem;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+
+    --transition-duration: 0.3s;
+
+    --height-max: 100%;
+    --width-max: 100%;
+    --box-width-small: 6.25rem; 
+    --box-width-medium: 12.5rem;
+    --box-width-large: 25rem; 
+    --box-height-small: 3.125rem; 
+    --box-height-medium: 6.25rem; 
+    --box-height-large: 12.5rem;
+
+    --box-shadow-light: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    --box-shadow-medium: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    --box-shadow-strong: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.15);
+}

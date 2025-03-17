@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="home__container">
+    <section class="index__table table__01">
+        <div class="ctnr__btn">
+            <h2>Registered Students</h2>
+            <a class="button__2 center__btn" href="{{ url_for('students.Student_registration') }}">Register Student</a>
+
+        </div>
+        <div class="container__table">
+            <div>
+                <form class="search__bar" action="{{ url_for('students.index') }}" method="GET">
+                    <input type="text" name="search" placeholder="Search by name" value="{{ search_query }}">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <table class="desktop__1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
+                        <th>Registered Trainings</th>
+                        <th>Last Evaluation Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>
+                            <a href="{{ url_for('students.profile', student_id=student.id) }}">{{ student.name }}</a>
+                        </td>
+                        <td>{{ student.gender }}</td>
+                        <td>{{ student.phone }}</td>
+                        <td>{{ student.treinos_cadastrados }}</td>
+                        <td>{{ student.data_ultima_avaliacao }}</td>
+                        <td>
+                            <a href="{{ url_for('training.register_training', student_id=student.id) }}"
+                                class="view-trainings-link" data-student-id="{{ student.id }}">View Trainings</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="list__01 mobile__1">
+                {% for student in students %}
+                <div class="list__item">
+                    <h3><a href="{{ url_for('students.profile', student_id=student.id) }}">{{ student.name }}</a></h3>
+                    <p><strong>Gender:</strong> {{ student.gender }}</p>
+                    <p><strong>Phone:</strong> {{ student.phone }}</p>
+                    <p><strong>Registered Trainings:</strong> {{ student.treinos_cadastrados }}</p>
+                    <p><strong>Last Evaluation Date:</strong> {{ student.data_ultima_avaliacao }}</p>
+                    <p><a href="{{ url_for('training.register_training', student_id=student.id) }}"
+                            class="view-trainings-link" data-student-id="{{ student.id }}">View Trainings</a></p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
