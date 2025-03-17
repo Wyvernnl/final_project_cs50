@@ -1,7 +1,5 @@
 # FitTrack
 
-#### Video Demo:  https://youtu.be/I-uhP1RBRdE
-
 ## Description
 
 **FitTrack** is a web-based application designed for efficient physical fitness assessment, exercise routines, and management of students' profiles. The app is based on the Flask framework and, therefore, assures efficiency and friendliness of service to the trainers when tracking students' progress in physical improvement, while at the same time helping students keep track of their personal development.
